@@ -1,0 +1,36 @@
+{% extends 'appoint/base.html' %}
+{% block content %}
+
+<div class="row">
+  
+  <div class="col-2">
+    
+  </div>
+  <div class="col-6">
+    <h3>Available Timings</h3>
+    <br>
+
+{% for slot in slots %}
+
+<hr>
+<h5>{{slot.date}} | {{slot.from_time}} to {{slot.to_time}}</h5>
+
+<br>
+{% endfor %}
+
+
+  
+<br>
+
+<br>
+<br>
+
+<button type="button" class="btn btn-dark btn-lg"><a class="" href="{% url 'form' %}">Appointment Booking Form</a></button>
+
+
+  </div>
+
+</div>
+
+
+{% endblock content %}

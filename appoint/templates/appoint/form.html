@@ -1,0 +1,62 @@
+{% extends 'appoint/base.html' %}
+{% block content %}
+
+<h3>Booked Appointments</h3>
+
+<br>
+<hr>
+
+
+{% for slot in slots %}
+
+
+<h5>{{slot.date}} | {{slot.from_time}} to {{slot.to_time}}</h5>
+
+{% for appoint in appointment %}
+
+{% if appoint.adate == slot.date %}
+
+<button type="button" class="btn btn-info"><h6>{{appoint.afrom_time}} to {{appoint.ato_time}}</h6></button>
+
+{% endif %}
+
+{% endfor %}
+
+<br>
+<br>  
+
+{% endfor %}
+
+<br>
+<br>
+
+
+<hr>
+
+<h2>Choose Date & Time to book Appointment</h2>
+
+<form method='POST'>
+  {% csrf_token %}
+  
+  <div class="row">
+  
+  <div class="col"><h5>Date : {{form.adate}}</h5></div>
+  <div class="col"><h5>From : {{form.afrom_time}}</h5></div>
+  <div class="col"><h5>To : {{form.ato_time}}</h5></div>
+
+
+  </div>
+  <br>
+  <div class="row">
+  
+  <div class="col-4"></div>
+  <div class="col"><button type="button" class="btn btn-info"><input class="btn btn-dark" type="submit"></button></div>
+
+  
+  </div>
+</form>
+
+{% endblock content %}
+
+
+
