@@ -1,5 +1,5 @@
 from django.shortcuts import render, redirect
-from .models import Time_Slot, Appointment, Hour
+from .models import Time_Slot, Appointment
 from .forms import Appointment_Form
 from django.contrib import messages
 from .forms import UserRegisterForm
@@ -24,9 +24,7 @@ def register(request):
 @login_required
 def Form(request):
 	slots = Time_Slot.objects.all()
-	appointment = Appointment.objects.all()
-	hour = Hour.objects.all()
-	
+	appointment = Appointment.objects.all()	
 	if request.method == "POST":
 		form = Appointment_Form(request.POST)
 		if form.is_valid():
@@ -88,7 +86,7 @@ def Form(request):
 		form = Appointment_Form()
 
 	context = {'slots':slots,'form':form,'appointment':appointment}
-	# context = {'slots':slots,'appoint':appoint,'hour':hour}
+	
 
 	return render(request,'appoint/form.html',context = context)
 

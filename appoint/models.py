@@ -26,7 +26,3 @@ class Appointment(models.Model):
        ordering = ['adate','afrom_time']
        get_latest_by='date'    
     
-class Hour(models.Model):
-    hfrom_time = models.TimeField()
-    hto_time = models.TimeField()
-    slot = models.ForeignKey(Time_Slot,on_delete=models.CASCADE)
